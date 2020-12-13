@@ -1,18 +1,19 @@
 import { PayPalButton } from "react-paypal-button-v2";
 import { Component } from "react"
+const { REACT_APP_CLIENT_ID, REACT_APP_PLAN_ID } = process.env
 
 export default class Example extends Component {
   render() {
     return (
       <PayPalButton
         options={{
-          clientId: "AZQ5tBhfxUkg4CUffrj_ttphs0BdX8zhf2O6KXo6NeKR1HhjhUhcQsswTP9v4rNNbXTZdoCSC5deDn5Q",
+          clientId: REACT_APP_CLIENT_ID,
           vault: true
         }}
         createSubscription={(data, actions) => {
           console.log('@W@@@@@@@@@@@@@@@@@', data);
           return actions.subscription.create({
-            plan_id: 'P-3XJ24668YY5203131L7K3JGQ'
+            plan_id: REACT_APP_PLAN_ID
           });
         }}
         onApprove={(data, actions) => {
